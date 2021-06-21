@@ -7,5 +7,7 @@
     "5": "your zoom class id6",
     "6": "your zoom class id7",
     "period": "7",
-    "freetime": "10"
+    "freetime": "10",
+    "start_time_Lookup_after_hour": "9",
+    "start_time_Lookup_after_minute": "14"
 }

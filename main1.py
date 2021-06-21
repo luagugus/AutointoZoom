@@ -7,6 +7,7 @@ import json
 import schedule
 import time
 import pyautogui as pag
+import datetime as dt
 
 class MyApp(QWidget):
 
@@ -39,35 +40,37 @@ class MyApp(QWidget):
         self.zoomid7.move(20, 220)
 
         self.setWindowTitle('AUZ')
-        self.setWindowIcon(QIcon('NekoIcon.png'))
         self.move(300, 300)
         self.resize(200, 300)
         self.show()
-        for i in range(int(json_data['period'])):
-            sec = int(45) * 60 + int(json_data['freetime'])
-            print(sec)
+        while True:
+            x = dt.datetime.now()
+            if x.hour == int(json_data['start_time_Lookup_after_hour']) and x.minute == int(json_data["start_time_Lookup_after_minute"]):
+                for i in range(int(json_data['period'])):
+                    sec = int(45) * 60 + int(json_data['freetime'])
+                    print(sec)
 
-            x, y = pag.position()
-            print(x, y)  
+                    x, y = pag.position()
+                    print(x, y)  
 
-            pag.moveTo(231,1067)
-            pag.click()
-            pag.typewrite("zoom")
-            pag.press('enter')
-            pag.moveTo(951,530)
-            time.sleep(2)
-            pag.click()
+                    pag.moveTo(231,1067)
+                    pag.click()
+                    pag.typewrite("zoom")
+                    pag.press('enter')
+                    pag.moveTo(951,530)
+                    time.sleep(2)
+                    pag.click()
 
-            pag.moveTo(946,486)
-            time.sleep(2)
-            pag.click()
-            pag.typewrite(json_data[str(i)])
+                    pag.moveTo(946,486)
+                    time.sleep(2)
+                    pag.click()
+                    pag.typewrite(json_data[str(i)])
 
 
-            while (sec != 0 ):
-                sec = sec-1
-                time.sleep(1)
-                print(sec)
+                    while (sec != 0 ):
+                        sec = sec-1
+                        time.sleep(1)
+                        print(sec)
 
         
 
