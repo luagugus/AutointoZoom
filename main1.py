@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QToolTip, QCheckBox, QLineEdit, QTextEdit, QLabel
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import QCoreApplication
 from PyQt5.QtGui import QIcon
 import pyautogui as pag
 import json
@@ -18,25 +18,29 @@ class MyApp(QWidget):
     def initUI(self):
         with open('datashcol.json', 'r') as f:
             json_data = json.load(f)
-        self.zoomid1 = QLabel(json_data['0'], self)
+        if dt.datetime.today().weekday() != 5 or 6:
+            a = dt.datetime.today().weekday()
+        else: 
+            QCoreApplication.instance().quit
+        self.zoomid1 = QLabel(json_data[str(a) + 'day']['0'], self)
         self.zoomid1.move(20, 40)
 
-        self.zoomid2 = QLabel(json_data['1'], self)
+        self.zoomid2 = QLabel(json_data[str(a) + 'day']['1'], self)
         self.zoomid2.move(20, 70)
 
-        self.zoomid3 = QLabel(json_data['2'], self)
+        self.zoomid3 = QLabel(json_data[str(a) + 'day']['2'], self)
         self.zoomid3.move(20, 100)
 
-        self.zoomid4 = QLabel(json_data['3'], self)
+        self.zoomid4 = QLabel(json_data[str(a) + 'day']['3'], self)
         self.zoomid4.move(20, 130)
 
-        self.zoomid5 = QLabel(json_data['4'], self)
+        self.zoomid5 = QLabel(json_data[str(a) + 'day']['4'], self)
         self.zoomid5.move(20, 160)
 
-        self.zoomid6 = QLabel(json_data['5'], self)
+        self.zoomid6 = QLabel(json_data[str(a) + 'day']['5'], self)
         self.zoomid6.move(20, 190)
 
-        self.zoomid7 = QLabel(json_data['6'], self)
+        self.zoomid7 = QLabel(json_data[str(a) + 'day']['6'], self)
         self.zoomid7.move(20, 220)
 
         self.setWindowTitle('AUZ')
@@ -45,9 +49,10 @@ class MyApp(QWidget):
         self.show()
         while True:
             x = dt.datetime.now()
-            if x.hour == int(json_data['start_time_Lookup_after_hour']) and x.minute == int(json_data["start_time_Lookup_after_minute"]):
-                for i in range(int(json_data['period'])):
-                    sec = int(45) * 60 + int(json_data['freetime'])
+        
+            if x.hour == int(json_data[str(a) + 'day']['start_time_Lookup_after_hour']) and x.minute == int(json_data[str(a) + 'day']["start_time_Lookup_after_minute"]):
+                for i in range(int(json_data[str(a) + 'day']['period'])):
+                    sec = int(45) * 60 + int(json_data[str(a) + 'day']['freetime'])
                     print(sec)
 
                     x, y = pag.position()
@@ -64,7 +69,7 @@ class MyApp(QWidget):
                     pag.moveTo(946,486)
                     time.sleep(2)
                     pag.click()
-                    pag.typewrite(json_data[str(i)])
+                    pag.typewrite(json_data[str(a) + 'day'][str(i)])
 
 
                     while (sec != 0 ):
