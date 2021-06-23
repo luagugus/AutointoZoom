@@ -10,7 +10,8 @@ Alpha 1.2v all five day's data to json
 bata 1.0v exe file and fix -> no answer, overload
 
 실행방법 폰트 파일에있는 폰트다운후 disk파일에 있는 "ATZ.exe" 실행 후 "datashool.json"파일에서 조회시간 ,줌 id , 몇교시인지 수정
-    "0day" : # 월요일
+
+        "0day" : # 월요일
         {
             "0": "your zoom class id1", #1교시
             "1": "your zoom class id2", #2교시
