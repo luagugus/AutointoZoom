@@ -4,7 +4,7 @@
 block_cipher = None
 
 
-a = Analysis(['main1.py'],
+a = Analysis(['qtextbrowser_advanced.py'],
              pathex=['C:\\Users\\sosnm\\OneDrive\\바탕 화면\\pgugu\\pgugu\\github\\Autozoom'],
              binaries=[],
              datas=[],
@@ -24,7 +24,7 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           [],
-          name='main1',
+          name='qtextbrowser_advanced',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,

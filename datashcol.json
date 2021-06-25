@@ -29,7 +29,7 @@
         },
     "2day" : 
         {
-            "0": "your zoom 1212 id1",
+            "0": "1243242",
             "1": "your zoom class id2",
             "2": "your zoom class id3",
             "3": "your zoom class id4",
@@ -38,8 +38,8 @@
             "6": "your zoom class id7",
             "period": "6",
             "freetime": "10",
-            "start_time_Lookup_after_hour": "9",
-            "start_time_Lookup_after_minute": "14"
+            "start_time_Lookup_after_hour": "22",
+            "start_time_Lookup_after_minute": "57"
         },
     "3day" : 
         {

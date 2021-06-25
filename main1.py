@@ -9,23 +9,20 @@ import schedule
 import time
 import pyautogui as pag
 import datetime as dt
-with open('datashcol.json', 'r') as f:
-    json_data = json.load(f)
-if dt.datetime.today().weekday() != 5 or 6:
-    a = dt.datetime.today().weekday()
-else: 
-    quit()
+
 class Loopday(QThread):
     def run(self):
-        with open('datashcol.json', 'r') as f:
+        with open('datashcol.json', 'r',encoding = 'UTF-8') as f:
             json_data = json.load(f)
         a = dt.datetime.today().weekday()
         while True:
             x = dt.datetime.now()
             hour = int(json_data[str(a) + 'day']['start_time_Lookup_after_hour'])
             minute = int(json_data[str(a) + 'day']["start_time_Lookup_after_minute"])
+            
             if x.hour == hour and x.minute == minute:
                 for i in range(int(json_data[str(a) + 'day']['period'])):
+                    tr = json_data[str(a) + 'day'][str(i)]
                     sec = int(45) * 60 + int(json_data[str(a) + 'day']['freetime'])
                     print(sec)
 
@@ -41,9 +38,10 @@ class Loopday(QThread):
                     pag.click()
 
                     pag.moveTo(946,486)
-                    time.sleep(2)
+                    time.sleep(3)
                     pag.click()
-                    pag.typewrite(json_data[str(a) + 'day'][str(i)])
+                    
+                    pag.typewrite(tr)
 
 
                     while (sec != 0 ):
@@ -59,7 +57,12 @@ class MyApp(QWidget):
         self.initUI()
 
     def initUI(self):
-
+        with open('datashcol.json', 'r',encoding = 'UTF-8') as f:
+            json_data = json.load(f)
+        if dt.datetime.today().weekday() != 5 or 6:
+            a = dt.datetime.today().weekday()
+        else: 
+            quit()
         self.zoomid1 = QLabel(json_data[str(a) + 'day']['0'], self)
         self.zoomid1.move(20, 40)
         self.zoomid1.setStyleSheet("Color : white;""image:url(pictures/buttonidd.png);border:0px;")
