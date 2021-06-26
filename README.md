@@ -25,3 +25,4 @@ bata 1.0v exe file and fix -> no answer, overload
             "start_time_Lookup_after_hour": "9", #조회끝나고 수업시작하는 시간 (시)
             "start_time_Lookup_after_minute": "14" #조회끝나고 수업시작하는 시간 (분)
         },
+   6/26 최종완성
